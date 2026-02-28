@@ -262,7 +262,7 @@
     .message-section { padding: 4rem 1.5rem; }
     .hero h1 { font-size: 3.6rem !important; }
     .hero .dob { font-size: 1.5rem !important; letter-spacing: 0.2em !important; }
-    .hero .scroll-hint { font-size: 1.5rem !important; }
+    .hero .scroll-hint { display: none !important; }
     .message-section p { font-size: 2.2rem !important; }
     .signoff h2 { font-size: 6rem !important; }
     .signoff p { font-size: 2rem !important; }
@@ -498,6 +498,25 @@
     });
 
 
+
+    // Password gate
+    function checkPassword() {
+      const input = document.getElementById('passwordInput');
+      const error = document.getElementById('passwordError');
+      if (input.value === 'lenny18') {
+        document.getElementById('lockedContent').classList.add('unlocked');
+        document.getElementById('passwordGate').style.display = 'none';
+        sessionStorage.setItem('lenny_unlocked', 'true');
+      } else {
+        error.textContent = 'Incorrect password';
+        input.value = '';
+      }
+    }
+    // Check if already unlocked this session
+    if (sessionStorage.getItem('lenny_unlocked') === 'true') {
+      document.getElementById('lockedContent').classList.add('unlocked');
+      document.getElementById('passwordGate').style.display = 'none';
+    }
   </script>
 
 </body>
