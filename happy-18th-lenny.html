@@ -257,8 +257,10 @@
 
   @media (max-width: 500px) {
     .hero { min-height: auto; padding-top: 2rem; padding-bottom: 3rem; }
-    .photo-grid { column-count: 2; padding: 0.5rem; column-gap: 6px; }
-    .photo { margin-bottom: 6px; }
+    .photo-grid { column-count: unset !important; display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 6px !important; padding: 0.5rem !important; }
+    .photo { margin-bottom: 0 !important; break-inside: unset !important; }
+    .hero-photo { grid-column: 1 / -1 !important; max-width: 100% !important; margin: 0.5rem 0 !important; }
+    .hero-photo.hero-full { max-width: 100% !important; }
     .message-section { padding: 4rem 1.5rem; }
     .hero h1 { font-size: 2rem !important; }
     .hero .dob { font-size: 0.85rem !important; letter-spacing: 0.15em !important; }
