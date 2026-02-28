@@ -260,6 +260,53 @@
     .photo { margin-bottom: 6px; }
     .message-section { padding: 4rem 1.5rem; }
   }
+
+  /* Password gate */
+  .password-gate {
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+  .password-gate input {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--gold);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--cream);
+    text-align: center;
+    outline: none;
+    margin-right: 0.5rem;
+  }
+  .password-gate input::placeholder {
+    color: rgba(17,17,17,0.3);
+  }
+  .password-gate button {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    padding: 0.75rem 2rem;
+    border: 2px solid var(--gold);
+    border-radius: 6px;
+    background: var(--gold);
+    color: #fff;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .password-gate button:hover {
+    background: var(--gold-light);
+  }
+  .password-gate .error {
+    color: #cc3333;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  .locked-content {
+    display: none;
+  }
+  .locked-content.unlocked {
+    display: block;
+  }
+
 </style>
 </head>
 <body>
@@ -272,6 +319,15 @@
     <div class="dob">29 February 2008 &mdash; A leap year legend</div>
     <div class="scroll-hint">scroll</div>
   </section>
+
+  <!-- Password gate -->
+  <div class="password-gate" id="passwordGate">
+    <input type="password" id="passwordInput" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkPassword()">
+    <button onclick="checkPassword()">Unlock</button>
+    <div class="error" id="passwordError"></div>
+  </div>
+
+  <div class="locked-content" id="lockedContent">
 
   <!-- Birthday message -->
   <section class="message-section">
@@ -406,6 +462,8 @@
     <button class="close-btn" onclick="closeLightbox()">&times;</button>
     <img id="lightboxImg" src="" alt="">
   </div>
+
+  </div><!-- /locked-content -->
 
   <script>
     // Lightbox
